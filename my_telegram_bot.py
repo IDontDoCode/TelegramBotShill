@@ -4,7 +4,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import random
 
 # Set up the Telegram bot
-updater = Updater(token=6008309342:AAH0h0BAS-kjf3BErJcZrH1n-qY3J61DNew, use_context=True)
+updater = Updater(token='6008309342:AAH0h0BAS-kjf3BErJcZrH1n-qY3J61DNew', use_context=True)
 dispatcher = updater.dispatcher
 
 # Define a global list to store the ticket counts
