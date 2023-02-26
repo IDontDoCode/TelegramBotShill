@@ -70,4 +70,4 @@ dispatcher.add_handler(MessageHandler(Filters.command, message_deleted))
 updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
                           url_path=TOKEN)
-updater.bot.setWebhook('https://aqueous-wildwood-81813.herokuapp.com//' + TOKEN)
+updater.bot.setWebhook('https://aqueous-wildwood-81813.herokuapp.com/' + TOKEN)
