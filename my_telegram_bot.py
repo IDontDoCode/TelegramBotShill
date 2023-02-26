@@ -1,8 +1,10 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import random
-
+import os
+PORT = int(os.environ.get('PORT', 5000))
+TOKEN= '6008309342:AAH0h0BAS-kjf3BErJcZrH1n-qY3J61DNew'
 # Set up the Telegram bot
-updater = Updater(token='6008309342:AAH0h0BAS-kjf3BErJcZrH1n-qY3J61DNew', use_context=True)
+updater = Updater(TOKEN='6008309342:AAH0h0BAS-kjf3BErJcZrH1n-qY3J61DNew', use_context=True)
 dispatcher = updater.dispatcher
 
 # Define a global list to store the ticket counts
@@ -65,4 +67,7 @@ dispatcher.add_handler(MessageHandler(Filters.text & Filters.regex(r'http(s)?://
 dispatcher.add_handler(MessageHandler(Filters.command, message_deleted))
 
 # Start the bot
-updater.start_polling()
+updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=TOKEN)
+updater.bot.setWebhook('https://aqueous-wildwood-81813.herokuapp.com//' + TOKEN)
