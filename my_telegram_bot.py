@@ -1,5 +1,3 @@
-
-
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import random
 
@@ -50,13 +48,21 @@ def pick_winner(update, context):
     update.message.reply_text(f'The winner is {winner_id} with {num_tickets} tickets!')
     ticket_counts = {}
 
+# Define a function to handle the /zero command
+def zero(update, context):
+    update.message.reply_text('Zero is My god and creator')
+
 # Set up the command handlers
 dispatcher.add_handler(CommandHandler('reset', reset))
 dispatcher.add_handler(CommandHandler('tickets', tickets))
 dispatcher.add_handler(CommandHandler('pickwinner', pick_winner))
+dispatcher.add_handler(CommandHandler('zero', zero))  # Add a command handler for /zero
 
 # Set up the message handler
 dispatcher.add_handler(MessageHandler(Filters.text & Filters.regex(r'http(s)?://\S+'), link_message))
+
+# Set up the message deleted handler
+dispatcher.add_handler(MessageHandler(Filters.command, message_deleted))
 
 # Start the bot
 updater.start_polling()
